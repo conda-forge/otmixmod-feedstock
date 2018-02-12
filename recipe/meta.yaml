@@ -1,5 +1,5 @@
 {% set version = "0.5" %}
-{% set ot_version = "1.10rc1" %}
+{% set ot_version = "1.10" %}
 
 package:
   name: otmixmod
@@ -12,30 +12,30 @@ source:
 
   fn: otmixmod-{{ version }}-py2.7-i686.exe  # [win32 and py27]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py2.7-i686.exe  # [win32 and py27]
-  sha256: 103125f69abd2d3809197d0b782b6c85b6bc25638a362b95b03f6cf5040d5552  # [win32 and py27]
+  sha256: 067118cf64a32d1c824453e5449aeb072d88383fb02be3ffb751b82474187879  # [win32 and py27]
 
   fn: otmixmod-{{ version }}-py2.7-x86_64.exe  # [win64 and py27]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py2.7-x86_64.exe  # [win64 and py27]
-  sha256: 23df3840bf43c621e929e09b3401c9f4046fc0af51dccae1c1415e3d064ad9b2  # [win64 and py27]
+  sha256: 122b0c667113b7004f026cca1ad56881f7fd19948fedbcd3a9c817244abb2992  # [win64 and py27]
 
   fn: otmixmod-{{ version }}-py3.5-i686.exe  # [win32 and py35]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.5-i686.exe  # [win32 and py35]
-  sha256: 5b85e821accb426f2f3721857afff5c926e037fccc60acc6beb98e91a3a22ac5  # [win32 and py35]
+  sha256: 4bb7988b6a122f0a1975065f6197fc8356e221e4340d050acb5906d77604f409  # [win32 and py35]
 
   fn: otmixmod-{{ version }}-py3.5-x86_64.exe  # [win64 and py35]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.5-x86_64.exe  # [win64 and py35]
-  sha256: 14f3e8f2ee51fc063c28e8fdaab23fd1cafc2b9a84e6170cd7fbe00b35c8f6db  # [win64 and py35]
+  sha256: 990de58553b708981b619623ef95763a33df45b7c4158e56c866601951037b77  # [win64 and py35]
 
   fn: otmixmod-{{ version }}-py3.6-i686.exe  # [win32 and py36]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.6-i686.exe  # [win32 and py36]
-  sha256: 9a86a1135e82275047db7d4d60259e68dc51ee0d79ef601579a8b9f230993b78  # [win32 and py36]
+  sha256: 86925def41e29325b5978fccf2cb9cc2c281ceba45f504610de2f6aef0f79556  # [win32 and py36]
 
   fn: otmixmod-{{ version }}-py3.6-x86_64.exe  # [win64 and py36]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.6-x86_64.exe  # [win64 and py36]
-  sha256: 62488c09ba6b670ebe78805669cec0207787016b14e0b5e1e238fa21cf055794  # [win64 and py36]
+  sha256: a111d88aefce9b4fd12fd2f035dcccc82a21e04260dab3b67b1efa135ba84c8a  # [win64 and py36]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
