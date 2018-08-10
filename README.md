@@ -14,14 +14,16 @@ Summary: MixMod module
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/otmixmod-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/otmixmod-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/otmixmod-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/otmixmod-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/otmixmod-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/otmixmod-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/otmixmod-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/otmixmod-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/otmixmod-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/otmixmod-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/otmixmod-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/otmixmod-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/otmixmod/badges/version.svg)](https://anaconda.org/conda-forge/otmixmod)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/otmixmod/badges/downloads.svg)](https://anaconda.org/conda-forge/otmixmod)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-otmixmod-green.svg)](https://anaconda.org/conda-forge/otmixmod) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/otmixmod.svg)](https://anaconda.org/conda-forge/otmixmod) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/otmixmod.svg)](https://anaconda.org/conda-forge/otmixmod) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/otmixmod.svg)](https://anaconda.org/conda-forge/otmixmod) |
 
 Installing otmixmod
 ===================
