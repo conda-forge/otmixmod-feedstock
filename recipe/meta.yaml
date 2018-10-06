@@ -12,15 +12,15 @@ source:
 
   fn: otmixmod-{{ version }}-py2.7-x86_64.exe  # [win64 and py27]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py2.7-x86_64.exe  # [win64 and py27]
-  sha256: b06d0f3b839bafb74a288af62d5d7e8af0e2b3f887c9b5b60491f6c2865e8c8c  # [win64 and py27]
+  sha256: 9ad676f12bfe2fe00ede7bb54d439c45f89f1122012cdae8292bf04b75a6103b  # [win64 and py27]
 
   fn: otmixmod-{{ version }}-py3.6-x86_64.exe  # [win64 and py36]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.6-x86_64.exe  # [win64 and py36]
-  sha256: 3e78ce46dfb52970e231e7d8d3f5a440bd47cef86432e97e42d408bf8c91184a  # [win64 and py36]
+  sha256: 3e7bc6da95e9029e0d86b3846079148fbe33d152cbacb53c203ffa73adf888e5  # [win64 and py36]
 
   fn: otmixmod-{{ version }}-py3.7-x86_64.exe  # [win64 and py37]
   url: https://github.com/openturns/build-modules/releases/download/v{{ ot_version }}/otmixmod-{{ version }}-py3.7-x86_64.exe  # [win64 and py37]
-  sha256: f2dfbaaf46cb5a4c98d9959374c415d67f2abc870bfb722bbdb1bd312ae918c1  # [win64 and py37]
+  sha256: 3d2bf8bad81caebd945dcc7cfb3382ad0e360fe01e021ec0f4a0ba17bb697c15  # [win64 and py37]
 
 build:
   number: 2
