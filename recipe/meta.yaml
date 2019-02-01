@@ -31,8 +31,8 @@ test:
 
 about:
   home: http://openturns.org/
-  license: LGPL3
-  license_file: COPYING.LESSER
+  license: GPL
+  license_file: COPYING
   summary: MixMod module
 
 extra:
