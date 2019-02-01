@@ -3,7 +3,7 @@ About otmixmod
 
 Home: http://openturns.org/
 
-Package license: LGPL3
+Package license: GPL
 
 Feedstock license: BSD 3-Clause
 
