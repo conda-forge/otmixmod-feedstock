@@ -15,12 +15,13 @@ build:
 requirements:
   build:
     - cmake  # [not win]
+    - swig  # [not win]
     - {{ compiler('c') }}  # [not win]
     - {{ compiler('cxx') }}  # [not win]
   host:
     - python
-    - swig  # [not win]
     - openturns
+    - tbb-devel  # [not win]
   run:
     - python
     - openturns
