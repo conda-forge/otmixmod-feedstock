@@ -1,4 +1,4 @@
-{% set version = "0.8" %}
+{% set version = "0.9" %}
 
 package:
   name: otmixmod
@@ -7,10 +7,12 @@ package:
 source:
   fn: otmixmod-{{ version }}.tar.gz
   url: https://github.com/openturns/otmixmod/archive/v{{ version }}.tar.gz
-  sha256: 913351e937879221f716f15f3739b30300aedde465de1fa49d9146a7f006235e
+  sha256: 5922921793a34f5fd64d09e36298c30684f430769b1dad8c162331e8fb81b216
 
 build:
   number: 0
+  run_exports:
+    - {{ pin_subpackage('otmixmod', max_pin='x.x') }}
 
 requirements:
   build:
@@ -21,7 +23,6 @@ requirements:
   host:
     - python
     - openturns
-    - tbb-devel  # [not win]
   run:
     - python
     - openturns
