@@ -10,7 +10,7 @@ source:
   sha256: fb7c704a73d315b08fc681cd0eb2b3dd81378fce71ca896b50a0e6485b8787e1
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('otmixmod', max_pin='x.x') }}
 
@@ -20,6 +20,7 @@ requirements:
     - swig
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - curl  # [win]
   host:
     - python
     - openturns 1.15*
