@@ -10,7 +10,7 @@ source:
   sha256: abe10fb00302e94924ccbed04f113459e5a98bba0714cb632a70039d7c707355
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('otmixmod', max_pin='x.x') }}
 
