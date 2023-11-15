@@ -1,4 +1,4 @@
-{% set version = "0.14" %}
+{% set version = "0.15" %}
 
 package:
   name: otmixmod
@@ -7,7 +7,7 @@ package:
 source:
   fn: otmixmod-{{ version }}.tar.gz
   url: https://github.com/openturns/otmixmod/archive/v{{ version }}.tar.gz
-  sha256: ca83dc7b25d75cce5ac28e3b972a4700d450e07a90bb94d9c92cf772fbde1398
+  sha256: 81166be1c8d2056911f8ec8e4be056ae2967bd3a7b710b0e8eb6a7ba74bbd3d1
 
 build:
   number: 0
