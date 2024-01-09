@@ -25,6 +25,7 @@ requirements:
   host:
     - python
     - openturns 1.22*
+    - eigen
   run:
     - python
     - openturns 1.22*
