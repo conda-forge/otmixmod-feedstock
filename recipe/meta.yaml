@@ -7,7 +7,7 @@ package:
 source:
   fn: otmixmod-{{ version }}.tar.gz
   url: https://github.com/openturns/otmixmod/archive/v{{ version }}.tar.gz
-  sha256: b0cc5d1b8b5faa43e2ee121b19f3735a59389c5dc00398b7d4b1187d97fb0971
+  sha256: aee7efe6c1bb75705c7eb6993ce944987ef5c2c164be80592f3ccb686881b08c
 
 build:
   number: 0
