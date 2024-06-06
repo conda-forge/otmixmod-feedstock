@@ -26,7 +26,6 @@ requirements:
   host:
     - python
     - libmixmod  # [not win]
-    - libcblas
     - openturns
   run:
     - python
