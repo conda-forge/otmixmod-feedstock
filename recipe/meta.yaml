@@ -10,7 +10,7 @@ source:
   sha256: aab968bbf9a233db25ed5ccd5b1b05d478e731287d8d85bd09119ca4b459ade2
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('otmixmod', max_pin='x.x') }}
 
@@ -20,11 +20,11 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cmake
     - make  # [unix]
+    - ninja  # [win]
     - swig
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - curl  # [win]
   host:
     - python
     - libmixmod  # [not win]
