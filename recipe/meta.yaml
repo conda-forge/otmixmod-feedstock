@@ -8,6 +8,8 @@ source:
   fn: otmixmod-{{ version }}.tar.gz
   url: https://github.com/openturns/otmixmod/archive/v{{ version }}.tar.gz
   sha256: aab968bbf9a233db25ed5ccd5b1b05d478e731287d8d85bd09119ca4b459ade2
+  patches:
+    - 0001-Export-symbols.patch
 
 build:
   number: 1
