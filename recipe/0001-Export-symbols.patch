@@ -1,0 +1,159 @@
+From 3b9a1188fc415361931ef7a62d56adfae32fbf28 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Tue, 25 Nov 2025 20:38:45 +0100
+Subject: [PATCH] Export symbols
+
+---
+ cmake/FindMixmod.cmake                   |  3 --
+ lib/CMakeLists.txt                       |  1 +
+ lib/include/CMakeLists.txt               |  4 +++
+ lib/include/otmixmod/OTMIXMODprivate.hxx | 41 ++++++++++++++++++++++++
+ lib/src/CMakeLists.txt                   | 13 +++++---
+ lib/src/otmixmod/MixtureFactory.hxx      |  4 ++-
+ python/src/otmixmod_module.i             |  1 +
+ 7 files changed, 59 insertions(+), 8 deletions(-)
+ create mode 100644 lib/include/CMakeLists.txt
+ create mode 100644 lib/include/otmixmod/OTMIXMODprivate.hxx
+
+diff --git a/cmake/FindMixmod.cmake b/cmake/FindMixmod.cmake
+index 02c1e14..d13b297 100644
+--- a/cmake/FindMixmod.cmake
++++ b/cmake/FindMixmod.cmake
+@@ -8,9 +8,6 @@
+ #  MIXMOD_INCLUDE_DIRS - libsvm includes
+ #  MIXMOD_LIBRARY - where to find the LibSVM library
+ #  MIXMOD_LIBRARIES - aditional libraries
+-#  MIXMOD_MAJOR_VERSION - major version
+-#  MIXMOD_MINOR_VERSION - minor version
+-#  MIXMOD_VERSION_STRING - version (ex. 2.9.0)
+ #  MIXMOD_ROOT_DIR - root dir (ex. /usr/local)
+ 
+ #=============================================================================
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 7baf349..e852d75 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -1,4 +1,5 @@
+ 
++add_subdirectory ( include )
+ add_subdirectory ( src )
+ add_subdirectory ( test )
+ 
+diff --git a/lib/include/CMakeLists.txt b/lib/include/CMakeLists.txt
+new file mode 100644
+index 0000000..7015a93
+--- /dev/null
++++ b/lib/include/CMakeLists.txt
+@@ -0,0 +1,4 @@
++
++ot_add_current_dir_to_include_dirs ()
++
++ot_install_header_file (OTMIXMODprivate.hxx)
+diff --git a/lib/include/otmixmod/OTMIXMODprivate.hxx b/lib/include/otmixmod/OTMIXMODprivate.hxx
+new file mode 100644
+index 0000000..a11ad9e
+--- /dev/null
++++ b/lib/include/otmixmod/OTMIXMODprivate.hxx
+@@ -0,0 +1,41 @@
++
++#ifndef OTMIXMOD_PRIVATE_HXX
++#define OTMIXMOD_PRIVATE_HXX
++
++/* From http://gcc.gnu.org/wiki/Visibility */
++/* Generic helper definitions for shared library support */
++#if defined(_WIN32) || defined(__CYGWIN__)
++#define OTMIXMOD_HELPER_DLL_IMPORT __declspec(dllimport)
++#define OTMIXMOD_HELPER_DLL_EXPORT __declspec(dllexport)
++#define OTMIXMOD_HELPER_DLL_LOCAL
++#else
++#ifdef __GNUC__
++#define OTMIXMOD_HELPER_DLL_IMPORT __attribute__ ((visibility ("default")))
++#define OTMIXMOD_HELPER_DLL_EXPORT __attribute__ ((visibility ("default")))
++#define OTMIXMOD_HELPER_DLL_LOCAL  __attribute__ ((visibility ("hidden")))
++#else
++#define OTMIXMOD_HELPER_DLL_IMPORT
++#define OTMIXMOD_HELPER_DLL_EXPORT
++#define OTMIXMOD_HELPER_DLL_LOCAL
++#endif
++#endif
++
++/* Now we use the generic helper definitions above to define OTMIXMOD_API and OTMIXMOD_LOCAL.
++ * OTMIXMOD_API is used for the public API symbols. It either DLL imports or DLL exports (or does nothing for static build)
++ * OTMIXMOD_LOCAL is used for non-api symbols. */
++
++#ifndef OTMIXMOD_STATIC /* defined if OT is compiled as a DLL */
++#ifdef OTMIXMOD_DLL_EXPORTS /* defined if we are building the OT DLL (instead of using it) */
++#define OTMIXMOD_API OTMIXMOD_HELPER_DLL_EXPORT
++#else
++#define OTMIXMOD_API OTMIXMOD_HELPER_DLL_IMPORT
++#endif /* OTMIXMOD_DLL_EXPORTS */
++#define OTMIXMOD_LOCAL OTMIXMOD_HELPER_DLL_LOCAL
++#else /* OTMIXMOD_STATIC is defined: this means OT is a static lib. */
++#define OTMIXMOD_API
++#define OTMIXMOD_LOCAL
++#endif /* !OTMIXMOD_STATIC */
++
++
++#endif // OTMIXMOD_PRIVATE_HXX
++
+diff --git a/lib/src/CMakeLists.txt b/lib/src/CMakeLists.txt
+index 50e80e5..d252a23 100644
+--- a/lib/src/CMakeLists.txt
++++ b/lib/src/CMakeLists.txt
+@@ -1,12 +1,17 @@
+ ot_add_current_dir_to_include_dirs ()
+ 
+-ot_add_source_file ( MixtureFactory.cxx )
++ot_add_source_file (MixtureFactory.cxx)
+ 
+-ot_install_header_file ( MixtureFactory.hxx )
++ot_install_header_file (MixtureFactory.hxx)
+ 
+-include_directories ( ${INTERNAL_INCLUDE_DIRS} )
++include_directories (${INTERNAL_INCLUDE_DIRS})
++
++add_library (otmixmod ${SOURCEFILES})
++set_target_properties (otmixmod PROPERTIES POSITION_INDEPENDENT_CODE ON)
++if (BUILD_SHARED_LIBS)
++  set_target_properties (otmixmod PROPERTIES COMPILE_DEFINITIONS "OTMIXMOD_DLL_EXPORTS")
++endif ()
+ 
+-add_library ( otmixmod SHARED ${SOURCEFILES} )
+ if ( NOT DEFINED LIB_VERSION ) 
+   set ( LIB_VERSION 0.0.0 )
+ endif ()
+diff --git a/lib/src/otmixmod/MixtureFactory.hxx b/lib/src/otmixmod/MixtureFactory.hxx
+index ef6cd6d..94e007a 100644
+--- a/lib/src/otmixmod/MixtureFactory.hxx
++++ b/lib/src/otmixmod/MixtureFactory.hxx
+@@ -21,6 +21,8 @@
+ #ifndef OTMIXMOD_MIXTUREFACTORY_HXX
+ #define OTMIXMOD_MIXTUREFACTORY_HXX
+ 
++#include "otmixmod/OTMIXMODprivate.hxx"
++
+ #include <openturns/OTprivate.hxx>
+ #include <openturns/DistributionFactoryImplementation.hxx>
+ #include <openturns/Mixture.hxx>
+@@ -33,7 +35,7 @@ namespace OTMIXMOD
+ /**
+  * @class MixtureFactory
+  */
+-class MixtureFactory
++class OTMIXMOD_API MixtureFactory
+   : public OT::DistributionFactoryImplementation
+ {
+   CLASSNAME
+diff --git a/python/src/otmixmod_module.i b/python/src/otmixmod_module.i
+index 87d95c5..982fcc1 100644
+--- a/python/src/otmixmod_module.i
++++ b/python/src/otmixmod_module.i
+@@ -13,4 +13,5 @@
+ %import uncertainty_module.i
+ 
+ // The new classes
++%include otmixmod/OTMIXMODprivate.hxx
+ %include MixtureFactory.i
+-- 
+2.52.0
+
