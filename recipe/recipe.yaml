@@ -1,5 +1,5 @@
 context:
-  version: "0.20"
+  version: "0.21"
 
 package:
   name: otmixmod
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/openturns/otmixmod/archive/v${{ version }}.tar.gz
-  sha256: aab968bbf9a233db25ed5ccd5b1b05d478e731287d8d85bd09119ca4b459ade2
+  sha256: 7523b95e146aaf67938c75ffe62e934321fa591c9e5405a443b732bbd3a1db73
   patches:
     - 0001-Export-symbols.patch
 
 build:
-  number: 3
+  number: 0
   python:
     version_independent: true
 
