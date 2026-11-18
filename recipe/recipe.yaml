@@ -1,5 +1,5 @@
 context:
-  version: "0.21"
+  version: "0.22"
 
 package:
   name: otmixmod
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/openturns/otmixmod/archive/v${{ version }}.tar.gz
-  sha256: 7523b95e146aaf67938c75ffe62e934321fa591c9e5405a443b732bbd3a1db73
+  sha256: 495c36320b1ff6ff5874fcd95db417b3aa256ebc736d56d09c2082fe9ba0471d
 
 build:
-  number: 1
+  number: 0
   python:
     version_independent: true
 
